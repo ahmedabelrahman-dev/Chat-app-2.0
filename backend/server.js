@@ -2,12 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.routes.js';
 import connectToMongoDB from './db/connectToMongoDB.js';
-import fs from 'fs';
-import path from 'path';
+import messageRoutes from './routes/message.route.js';
 
 dotenv.config();
-console.log('Current directory:', process.cwd());
-console.log('.env exists:', fs.existsSync(path.resolve('.env')));
 
 const app = express();
 const PORT = process.env.PORT;
@@ -18,6 +15,7 @@ app.get('/', (req, res) => {
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 
 app.use('/api/auth', authRoutes);
+app.use('/api/messages', messageRoutes);
 
 app.listen(PORT, () => {
   connectToMongoDB();
