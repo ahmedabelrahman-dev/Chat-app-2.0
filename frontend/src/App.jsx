@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './pages/home/Home.jsx';
-import SignUp from './pages/signup/Signup.jsx';
+import Signup from './pages/signup/Signup.jsx';
 import Login from './pages/login/Login.jsx';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
@@ -21,7 +21,7 @@ function App() {
         />
         <Route
           path="/signup"
-          element={authUser ? <Navigate to="/" /> : <SignUp />}
+          element={authUser ? <Navigate to="/" /> : <Signup />}
         />
       </Routes>
       <Toaster />
